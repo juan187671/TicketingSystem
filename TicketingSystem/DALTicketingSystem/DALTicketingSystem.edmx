@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TicketingSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TTICKET">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="255" />
+          <Property Name="status" Type="nvarchar" MaxLength="255" />
+          <Property Name="autor" Type="nvarchar" MaxLength="255" />
+          <Property Name="assignee" Type="nvarchar" MaxLength="255" />
+          <Property Name="created" Type="date" Nullable="false" />
+          <Property Name="body" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="TTICKETSTATUS">
+          <Key>
+            <PropertyRef Name="status" />
+          </Key>
+          <Property Name="status" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TUSER">
+          <Key>
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="email" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="255" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" />
+          <Property Name="enable" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__TTICKET__assigne__2D27B809">
+          <End Role="TUSER" Type="Self.TUSER" Multiplicity="0..1" />
+          <End Role="TTICKET" Type="Self.TTICKET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TUSER">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="TTICKET">
+              <PropertyRef Name="assignee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TTICKET__autor__2C3393D0">
+          <End Role="TUSER" Type="Self.TUSER" Multiplicity="0..1" />
+          <End Role="TTICKET" Type="Self.TTICKET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TUSER">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="TTICKET">
+              <PropertyRef Name="autor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TTICKET__status__2B3F6F97">
+          <End Role="TTICKETSTATUS" Type="Self.TTICKETSTATUS" Multiplicity="0..1" />
+          <End Role="TTICKET" Type="Self.TTICKET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TTICKETSTATUS">
+              <PropertyRef Name="status" />
+            </Principal>
+            <Dependent Role="TTICKET">
+              <PropertyRef Name="status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TicketingSystemModelStoreContainer">
+          <EntitySet Name="TTICKET" EntityType="Self.TTICKET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TTICKETSTATUS" EntityType="Self.TTICKETSTATUS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TUSER" EntityType="Self.TUSER" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__TTICKET__assigne__2D27B809" Association="Self.FK__TTICKET__assigne__2D27B809">
+            <End Role="TUSER" EntitySet="TUSER" />
+            <End Role="TTICKET" EntitySet="TTICKET" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TTICKET__autor__2C3393D0" Association="Self.FK__TTICKET__autor__2C3393D0">
+            <End Role="TUSER" EntitySet="TUSER" />
+            <End Role="TTICKET" EntitySet="TTICKET" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TTICKET__status__2B3F6F97" Association="Self.FK__TTICKET__status__2B3F6F97">
+            <End Role="TTICKETSTATUS" EntitySet="TTICKETSTATUS" />
+            <End Role="TTICKET" EntitySet="TTICKET" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TicketingSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TTICKET">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="autor" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="assignee" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="created" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="body" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TUSER" Relationship="Self.FK__TTICKET__assigne__2D27B809" FromRole="TTICKET" ToRole="TUSER" />
+          <NavigationProperty Name="TUSER1" Relationship="Self.FK__TTICKET__autor__2C3393D0" FromRole="TTICKET" ToRole="TUSER" />
+          <NavigationProperty Name="TTICKETSTATUS" Relationship="Self.FK__TTICKET__status__2B3F6F97" FromRole="TTICKET" ToRole="TTICKETSTATUS" />
+        </EntityType>
+        <EntityType Name="TTICKETSTATUS">
+          <Key>
+            <PropertyRef Name="status" />
+          </Key>
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TTICKET" Relationship="Self.FK__TTICKET__status__2B3F6F97" FromRole="TTICKETSTATUS" ToRole="TTICKET" />
+        </EntityType>
+        <EntityType Name="TUSER">
+          <Key>
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="enable" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TTICKET" Relationship="Self.FK__TTICKET__assigne__2D27B809" FromRole="TUSER" ToRole="TTICKET" />
+          <NavigationProperty Name="TTICKET1" Relationship="Self.FK__TTICKET__autor__2C3393D0" FromRole="TUSER" ToRole="TTICKET" />
+        </EntityType>
+        <Association Name="FK__TTICKET__assigne__2D27B809">
+          <End Role="TUSER" Type="Self.TUSER" Multiplicity="0..1" />
+          <End Role="TTICKET" Type="Self.TTICKET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TUSER">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="TTICKET">
+              <PropertyRef Name="assignee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TTICKET__autor__2C3393D0">
+          <End Role="TUSER" Type="Self.TUSER" Multiplicity="0..1" />
+          <End Role="TTICKET" Type="Self.TTICKET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TUSER">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="TTICKET">
+              <PropertyRef Name="autor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TTICKET__status__2B3F6F97">
+          <End Role="TTICKETSTATUS" Type="Self.TTICKETSTATUS" Multiplicity="0..1" />
+          <End Role="TTICKET" Type="Self.TTICKET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TTICKETSTATUS">
+              <PropertyRef Name="status" />
+            </Principal>
+            <Dependent Role="TTICKET">
+              <PropertyRef Name="status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TicketingSystemEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TTICKET" EntityType="Self.TTICKET" />
+          <EntitySet Name="TTICKETSTATUS" EntityType="Self.TTICKETSTATUS" />
+          <EntitySet Name="TUSER" EntityType="Self.TUSER" />
+          <AssociationSet Name="FK__TTICKET__assigne__2D27B809" Association="Self.FK__TTICKET__assigne__2D27B809">
+            <End Role="TUSER" EntitySet="TUSER" />
+            <End Role="TTICKET" EntitySet="TTICKET" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TTICKET__autor__2C3393D0" Association="Self.FK__TTICKET__autor__2C3393D0">
+            <End Role="TUSER" EntitySet="TUSER" />
+            <End Role="TTICKET" EntitySet="TTICKET" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TTICKET__status__2B3F6F97" Association="Self.FK__TTICKET__status__2B3F6F97">
+            <End Role="TTICKETSTATUS" EntitySet="TTICKETSTATUS" />
+            <End Role="TTICKET" EntitySet="TTICKET" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TicketingSystemModelStoreContainer" CdmEntityContainer="TicketingSystemEntities">
+          <EntitySetMapping Name="TTICKET">
+            <EntityTypeMapping TypeName="TicketingSystemModel.TTICKET">
+              <MappingFragment StoreEntitySet="TTICKET">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="autor" ColumnName="autor" />
+                <ScalarProperty Name="assignee" ColumnName="assignee" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="body" ColumnName="body" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TTICKETSTATUS">
+            <EntityTypeMapping TypeName="TicketingSystemModel.TTICKETSTATUS">
+              <MappingFragment StoreEntitySet="TTICKETSTATUS">
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TUSER">
+            <EntityTypeMapping TypeName="TicketingSystemModel.TUSER">
+              <MappingFragment StoreEntitySet="TUSER">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="enable" ColumnName="enable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

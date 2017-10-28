@@ -1,0 +1,61 @@
+﻿@model IEnumerable<TicketingSystem.Models.Ticket>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create") |
+    @Html.ActionLink("View Open Tickets", "Index") |
+    @Html.ActionLink("View All Tickets", "IndexAll")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.body)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.created)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.body)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.created)
+            </td>
+            <td>
+                @Html.ActionLink(" ", "Edit", new { id = item.id }, new { @class = "glyphicon glyphicon-edit", data_toggle = "tooltip", @title = "Edit" })
+                @Html.ActionLink(" ", "Details", new { id = item.id }, new { @class = "glyphicon glyphicon-info-sign", data_toggle = "tooltip", @title = "Details" })
+                @if (item.status == "closed")
+                {
+                    @Html.ActionLink(" ", "CreateConfirmMsg", new { pError = "False", pMsg = "El ticket se encuentra cerrado." }, new { @class = "glyphicon glyphicon-eye-close", data_toggle = "tooltip", @title = "Close" })
+                }
+                else
+                {
+                    @Html.ActionLink(" ", "Delete", new { id = item.id }, new { @class = "glyphicon glyphicon-eye-open", data_toggle = "tooltip", @title = "Close" })
+                }
+            </td>
+        </tr>
+    }
+
+</table>

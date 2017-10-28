@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0478a74fad1d4fd3bbfc0d6eca9dd314" Name="Diagram1">
+        <EntityTypeShape EntityType="TicketingSystemModel.TTICKET" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TicketingSystemModel.TTICKETSTATUS" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TicketingSystemModel.TUSER" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <AssociationConnector Association="TicketingSystemModel.FK__TTICKET__assigne__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="TicketingSystemModel.FK__TTICKET__autor__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="TicketingSystemModel.FK__TTICKET__status__2B3F6F97" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

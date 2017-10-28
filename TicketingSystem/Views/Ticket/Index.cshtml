@@ -6,11 +6,25 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create") |
-    @Html.ActionLink("View Open Tickets", "Index") |
-    @Html.ActionLink("View All Tickets", "IndexAll")
-</p>
+<div class="row">
+    <div class="col-md-1">
+        @Html.ActionLink(" ", "Create", null, new { @class = "glyphicon glyphicon-plus iconListIndex", data_toggle = "tooltip", @title = "Create" })
+    </div>
+    <div class="col-md-3 pull-right">
+        View Closed Tickets
+        <label class="switch">
+            @if (@HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString() == "IndexAll")
+            {
+                <input type="checkbox" id="chkViewAll" checked="checked">
+            }
+            else
+            {
+                <input type="checkbox" id="chkViewAll">
+            }
+            <span class="slider"></span>
+        </label>
+    </div>
+</div>
 <table class="table">
     <tr>
         <th>
@@ -44,18 +58,26 @@
                 @Html.DisplayFor(modelItem => item.created)
             </td>
             <td>
-                @Html.ActionLink(" ", "Edit", new { id = item.id }, new { @class = "glyphicon glyphicon-edit", data_toggle = "tooltip", @title = "Edit" })
-                @Html.ActionLink(" ", "Details", new { id = item.id }, new { @class = "glyphicon glyphicon-info-sign", data_toggle = "tooltip", @title = "Details" })
+                @Html.ActionLink(" ", "Edit", new { id = item.id }, new { @class = "glyphicon glyphicon-edit iconListIndex", data_toggle = "tooltip", @title = "Edit" })
+                @Html.ActionLink(" ", "Details", new { id = item.id }, new { @class = "glyphicon glyphicon-info-sign iconListIndex", data_toggle = "tooltip", @title = "Details" })
                 @if (item.status == "closed")
                 {
-                    @Html.ActionLink(" ", "CreateConfirmMsg", new { pError = "False", pMsg = "El ticket se encuentra cerrado." }, new { @class = "glyphicon glyphicon-eye-close", data_toggle = "tooltip", @title = "Close" })
+                    @Html.ActionLink(" ", "CreateConfirmMsg", new { pError = "False", pMsg = "El ticket se encuentra cerrado." }, new { @class = "glyphicon glyphicon-eye-close iconListIndex", data_toggle = "tooltip", @title = "Close" })
                 }
                 else
                 {
-                    @Html.ActionLink(" ", "Delete", new { id = item.id }, new { @class = "glyphicon glyphicon-eye-open", data_toggle = "tooltip", @title = "Close" })
+                    @Html.ActionLink(" ", "Delete", new { id = item.id }, new { @class = "glyphicon glyphicon-eye-open iconListIndex", data_toggle = "tooltip", @title = "Close" })
                 }
             </td>
         </tr>
     }
 
 </table>
+
+@Html.Hidden("lnkShowClosed", Url.Action("Index", "Ticket"))
+@Html.Hidden("lnkShowAll", Url.Action("IndexAll", "Ticket"))
+
+@section scripts
+{
+    <script src="~/Scripts/codigo.js" type="text/javascript"></script>
+}

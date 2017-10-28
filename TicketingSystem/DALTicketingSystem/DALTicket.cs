@@ -67,9 +67,9 @@ namespace TicketingSystem.DALTicketingSystem
                     }
                 }
             }
-            catch
+            catch(Exception ex)
             {
-
+                retorno = null;
             }
             return retorno;
         }

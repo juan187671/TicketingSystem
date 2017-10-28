@@ -13,7 +13,7 @@ namespace TicketingSystem.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            if(Session["User"] != null) { RedirectToAction("Index", "Ticket"); }
+            if(Session["User"] != null) { return RedirectToAction("Index", "Ticket"); }
             return View(new TicketingSystem.Models.ErrorMsg(false, ""));
         }
 

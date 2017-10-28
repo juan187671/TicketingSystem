@@ -14,6 +14,8 @@ namespace TicketingSystem.Controllers
         [Authorize]
         public ActionResult Index()
         {
+            User user = (User)Session["User"];
+            if (user != null && !user.name.ToUpper().Equals("ADMIN") ) { return RedirectToAction("Index", "Home"); }
             List<TicketingSystem.Models.User> usersList = new BALUser().GetUsersList();
             return View(usersList);
         }
@@ -22,7 +24,9 @@ namespace TicketingSystem.Controllers
         // GET: User/Details/5
         public ActionResult Details(string pEmail)
         {
-            User user = new BALUser().getUser(pEmail);
+            User user = (User)Session["User"];
+            if (user != null && !user.name.ToUpper().Equals("ADMIN")) { return RedirectToAction("Index", "Home"); }
+            user = new BALUser().getUser(pEmail);
             return View(user);
         }
 
@@ -30,6 +34,8 @@ namespace TicketingSystem.Controllers
         [Authorize]
         public ActionResult Create()
         {
+            User user = (User)Session["User"];
+            if (user != null && !user.name.ToUpper().Equals("ADMIN")) { return RedirectToAction("Index", "Home"); }
             return View();
         }
 
@@ -38,6 +44,8 @@ namespace TicketingSystem.Controllers
         [HttpPost]
         public ActionResult Create(User model)
         {
+            User user = (User)Session["User"];
+            if (user != null && !user.name.ToUpper().Equals("ADMIN")) { return RedirectToAction("Index", "Home"); }
             try
             {
                 if (ModelState.IsValid && new BALUser().Create(model))
@@ -56,6 +64,8 @@ namespace TicketingSystem.Controllers
         [Authorize]
         public ActionResult Edit(string pEmail)
         {
+            User user = (User)Session["User"];
+            if (user != null && !user.name.ToUpper().Equals("ADMIN")) { return RedirectToAction("Index", "Home"); }
             User usr = new BALUser().getUser(pEmail);
             return View(usr);
         }
@@ -65,6 +75,8 @@ namespace TicketingSystem.Controllers
         [HttpPost]
         public ActionResult Edit(User pUser)
         {
+            User user = (User)Session["User"];
+            if (user != null && !user.name.ToUpper().Equals("ADMIN")) { return RedirectToAction("Index", "Home"); }
             try
             {
                 if (new BALUser().Edit(pUser))
@@ -83,6 +95,8 @@ namespace TicketingSystem.Controllers
         [Authorize]
         public ActionResult Delete(string pEmail)
         {
+            User user = (User)Session["User"];
+            if (user != null && !user.name.ToUpper().Equals("ADMIN")) { return RedirectToAction("Index", "Home"); }
             try
             {
                 if (new BALUser().Delete(pEmail))
@@ -102,6 +116,8 @@ namespace TicketingSystem.Controllers
         [HttpPost]
         public ActionResult Delete(string pEmail, FormCollection collection)
         {
+            User user = (User)Session["User"];
+            if (user != null && !user.name.ToUpper().Equals("ADMIN")) { return RedirectToAction("Index", "Home"); }
             try
             {
                 if (new BALUser().Delete(pEmail))
@@ -119,6 +135,8 @@ namespace TicketingSystem.Controllers
         [Authorize]
         public ActionResult CreateConfirmMsg(bool pError, string pMsg)
         {
+            User user = (User)Session["User"];
+            if (user != null && !user.name.ToUpper().Equals("ADMIN")) { return RedirectToAction("Index", "Home"); }
             ErrorMsg msg = new ErrorMsg(pError, pMsg);
             return View(msg);
         }

@@ -26,6 +26,9 @@
                         <li>
                             @Html.ActionLink("User Management", "Index", "User", new { area = "" }, new { @class = "nav-link" })
                         </li>
+                        <li>
+                            @Html.ActionLink("Ticket Dashboard", "Index", "Ticket", new { area = "" }, new { @class = "nav-link" })
+                        </li>
                     }
                     @if (Session["User"] != null)
                     {

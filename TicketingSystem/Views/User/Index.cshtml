@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<TicketingSystem.Models.User>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "User Management";
 }
 
-<h2>Index</h2>
+<h2>User Management</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink(" ", "Create", null, new { @class = "glyphicon glyphicon-plus iconListIndex", data_toggle = "tooltip", @title = "Create" })
 </p>
 <table class="table">
     <tr>
@@ -41,9 +41,9 @@
             @Html.DisplayFor(modelItem => item.enable)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { pEmail = item.email }) |
-            @Html.ActionLink("Details", "Details", new { pEmail = item.email }) |
-            @Html.ActionLink("Delete", "Delete", new { pEmail = item.email })
+            @Html.ActionLink(" ", "Edit", new { pEmail = item.email }, new { @class = "glyphicon glyphicon-edit iconListIndex", data_toggle = "tooltip", @title = "Edit" })
+            @Html.ActionLink(" ", "Details", new { pEmail = item.email }, new { @class = "glyphicon glyphicon-info-sign iconListIndex", data_toggle = "tooltip", @title = "Details" })
+            @Html.ActionLink(" ", "Delete", new { pEmail = item.email }, new { @class = "glyphicon glyphicon-remove iconListIndex", data_toggle = "tooltip", @title = "Delete" })
         </td>
     </tr>
 }

@@ -10,12 +10,12 @@
 {
     <div class="form-group">
         <label for="txtEmail">Email</label>
-        @Html.TextBox("txtEmail", "", new { placeholder = "Email", required = true, @type = "email", @class = "form-control" })
+        @Html.TextBox("txtEmail", "", new { placeholder = "Email", required="required", @type = "email", @class = "form-control" })
     </div>
 
     <div class="form-group">
         <label for="txtPassword">Password</label>
-        @Html.Password("txtPassword", "", new { placeholder = "Password", required = true, minlength = "8", maxlength = "50", @class = "form-control" })
+        @Html.Password("txtPassword", "", new { placeholder = "Password", required="required", minlength = "8", maxlength = "50", @class = "form-control" })
     </div>
 
     <input type="submit" value="Login" class="btn btn-primary" />

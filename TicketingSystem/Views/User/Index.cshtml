@@ -26,26 +26,27 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.password)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.enable)
-        </td>
-        <td>
-            @Html.ActionLink(" ", "Edit", new { pEmail = item.email }, new { @class = "glyphicon glyphicon-edit iconListIndex", data_toggle = "tooltip", @title = "Edit" })
-            @Html.ActionLink(" ", "Details", new { pEmail = item.email }, new { @class = "glyphicon glyphicon-info-sign iconListIndex", data_toggle = "tooltip", @title = "Details" })
-            @Html.ActionLink(" ", "Delete", new { pEmail = item.email }, new { @class = "glyphicon glyphicon-remove iconListIndex", data_toggle = "tooltip", @title = "Delete" })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.enable)
+            </td>
+            <td>
+                @Html.ActionLink(" ", "Edit", new { pEmail = item.email }, new { @class = "glyphicon glyphicon-edit iconListIndex", data_toggle = "tooltip", @title = "Edit" })
+                @Html.ActionLink(" ", "Details", new { pEmail = item.email }, new { @class = "glyphicon glyphicon-info-sign iconListIndex", data_toggle = "tooltip", @title = "Details" })
+                @Html.ActionLink(" ", "Delete", new { pEmail = item.email }, new { @class = "glyphicon glyphicon-remove iconListIndex", data_toggle = "tooltip", @title = "Delete" })
+            </td>
+        </tr>
+    }
 
 </table>

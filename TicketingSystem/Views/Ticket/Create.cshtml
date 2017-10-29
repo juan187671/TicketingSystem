@@ -6,10 +6,10 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Ticket</h4>
         <hr />
@@ -33,7 +33,7 @@
         <div class="form-group">
             <label for="Assignee" class="control-label col-md-2">Assignee To:</label>
             <div class="col-md-10">
-                @Html.DropDownList("Assignee", new SelectList(ViewBag.usersForDropList,"email","email"),new { @class = "form-control" })
+                @Html.DropDownList("Assignee", new SelectList(ViewBag.usersForDropList, "email", "email"), new { @class = "form-control" })
             </div>
         </div>
 

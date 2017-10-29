@@ -23,7 +23,7 @@ namespace TicketingSystem.Models
         public User author { get; }
 
         [Required(ErrorMessage = "assignee is required.")]
-        public User assignee { get; set; }  
+        public User assignee { get; set; }
 
         public DateTime created { get; }
 

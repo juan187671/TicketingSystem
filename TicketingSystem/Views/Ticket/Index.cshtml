@@ -6,7 +6,7 @@
 
 <h2>Dashboard</h2>
 
-<div class="row">
+<div class="row dashboardIndexAreaOp">
     <div class="col-md-1">
         @Html.ActionLink(" ", "Create", null, new { @class = "glyphicon glyphicon-plus iconListIndex", data_toggle = "tooltip", @title = "Create" })
     </div>
@@ -39,7 +39,6 @@
         <th>
             @Html.DisplayNameFor(model => model.created)
         </th>
-        <th></th>
     </tr>
 
     @foreach (var item in Model)
@@ -62,11 +61,11 @@
                 @Html.ActionLink(" ", "Details", new { id = item.id }, new { @class = "glyphicon glyphicon-info-sign iconListIndex", data_toggle = "tooltip", @title = "Details" })
                 @if (item.status == "closed")
                 {
-                    @Html.ActionLink(" ", "CreateConfirmMsg", new { pError = "False", pMsg = "El ticket se encuentra cerrado." }, new { @class = "glyphicon glyphicon-eye-close iconListIndex", data_toggle = "tooltip", @title = "Close" })
+                    @Html.ActionLink(" ", "CreateConfirmMsg", new { pError = "False", pMsg = "El ticket se encuentra cerrado." }, new { @class = "fa fa-lock iconListIndexAwesome", data_toggle = "tooltip", @title = "Closed" })
                 }
                 else
                 {
-                    @Html.ActionLink(" ", "Delete", new { id = item.id }, new { @class = "glyphicon glyphicon-eye-open iconListIndex", data_toggle = "tooltip", @title = "Close" })
+                    @Html.ActionLink(" ", "Delete", new { id = item.id }, new { @class = "fa fa-unlock-alt iconListIndexAwesome", data_toggle = "tooltip", @title = "Close" })
                 }
             </td>
         </tr>

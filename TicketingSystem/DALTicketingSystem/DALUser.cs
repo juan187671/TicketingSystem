@@ -20,7 +20,7 @@ namespace TicketingSystem.DALTicketingSystem
                         email = u.email,
                         name = u.name,
                         password = u.password,
-                        enable = u.enable                        
+                        enable = u.enable
                     }).ToList();
                 }
             }
@@ -93,7 +93,7 @@ namespace TicketingSystem.DALTicketingSystem
                     };
                     entidades.TUSER.Add(user);
                     entidades.SaveChanges();
-                    retorno = true;                    
+                    retorno = true;
                 }
             }
             catch

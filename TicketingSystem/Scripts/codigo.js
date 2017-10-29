@@ -4,13 +4,12 @@
     });
 });
 
-var ViewAllTickets = function () {    
+var ViewAllTickets = function () {
     if ($('#chkViewAll').is(':checked')) {
         url = $('#lnkShowAll').val();
         window.location.href = url;
     }
-    else
-    {
+    else {
         url = $('#lnkShowClosed').val();
         window.location.href = url;
     }

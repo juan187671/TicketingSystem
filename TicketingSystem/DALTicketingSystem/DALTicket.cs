@@ -60,14 +60,14 @@ namespace TicketingSystem.DALTicketingSystem
             {
                 using (var entidades = new TicketingSystemEntities())
                 {
-                    TUSER aux = entidades.TUSER.Where(t => t.email.ToUpper().Equals(pEmail.ToUpper()) && t.password.Equals(pPassword) ).FirstOrDefault();
+                    TUSER aux = entidades.TUSER.Where(t => t.email.ToUpper().Equals(pEmail.ToUpper()) && t.password.Equals(pPassword)).FirstOrDefault();
                     if (aux != null)
                     {
                         retorno = new User(aux.email, aux.password, aux.name, aux.enable);
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 retorno = null;
             }

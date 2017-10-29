@@ -33,9 +33,9 @@ namespace TicketingSystem.BALTicketingSystem
             return new DALTicketingSystem.DALTicket().GetAllAssigneeTickets(pUser);
         }
 
-        internal bool Edit(User pUsuario,int pId, string pBody, string pStatus, string pAssignee)
+        internal bool Edit(User pUsuario, int pId, string pBody, string pStatus, string pAssignee)
         {
-            return new DALTicketingSystem.DALTicket().Edit(pUsuario,pId, pBody, pStatus, pAssignee);
+            return new DALTicketingSystem.DALTicket().Edit(pUsuario, pId, pBody, pStatus, pAssignee);
         }
     }
 }

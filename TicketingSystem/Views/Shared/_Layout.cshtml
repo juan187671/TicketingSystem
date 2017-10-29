@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - TicketingSystem </title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body>
@@ -17,7 +18,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("TicketingSystem", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })                
+                @Html.ActionLink("TicketingSystem", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -44,7 +45,7 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer class="footer">
+        <footer class="footer hidden-sm, hidden-xs">
             <p>Posted by: Juan Fernández</p>
             <p>&copy; @DateTime.Now.Year - TicketingSystem - Juan Fernández</p>
         </footer>
@@ -52,6 +53,6 @@
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
-    @RenderSection("scripts", false)    
+    @RenderSection("scripts", false)
 </body>
 </html>

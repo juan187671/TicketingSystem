@@ -29,6 +29,16 @@ textarea {
     color: #428bca;
 }
 
+.iconListIndexAwesome {
+    font-size: 150% !important;
+    margin-left: 5px;
+    color: #428bca;
+}
+
+.dashboardIndexAreaOp {
+    margin-bottom: 10px;
+}
+
 /* The switch - the box around the slider */
 .switch {
     margin-top: 5px;

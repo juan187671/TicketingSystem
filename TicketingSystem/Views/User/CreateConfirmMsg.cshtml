@@ -4,17 +4,17 @@
     ViewBag.Title = "CreateConfirmMsg";
 }
 
-@if(Model != null && Model.error)
-    {
+@if (Model != null && Model.error)
+{
     <div class="alert alert-warning">
         <span>@Model.msg</span>
     </div>
-    }
-    else
-    {
+}
+else
+{
     <div class="alert alert-success">
         <span>@Model.msg</span>
     </div>
-    }
+}
 <br />
 @Html.ActionLink("Continuar", "Index", "User", null, new { @class = "btn btn-primary" })
